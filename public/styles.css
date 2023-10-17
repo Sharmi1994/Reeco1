@@ -1,0 +1,96 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+.body{
+    background-color: #F5F5F5;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background-color: #006400;
+}
+.Label{
+    color:white;
+    display:flex;
+    justify-content: space-around;
+    width:400px
+}
+.title{
+    font-family: cursive;
+    font-size:xx-large;
+}
+.sideName{
+    padding-top: 15px;
+}
+.cartitems{
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    color: white
+}
+.orderid{
+    font-size: smaller;
+ margin-right:850px
+}
+
+.order{
+
+    font-weight: bold;
+    font-size: x-large;
+    margin-top:20px
+}
+.approvebtn{
+    display: flex;
+    justify-content: end;
+     
+}
+.supplierdetails{
+    border-style: outset;
+    border-width: thin;
+    border-color: grey;
+border-radius: 10px;
+   
+}
+.inner{ 
+        border-right: 1px solid black;
+        padding: 10px 15px;
+        font-size: small;
+    
+}
+.supplydata{
+    font-weight: bold;
+    font-family: math;
+}
+.supplydetails{
+   
+    border: 1px solid;
+    border-radius: 10px;
+}
+.icon-rtl  {
+    padding-right: 25px;
+    background: url("https://www.clker.com/cliparts/w/r/Q/0/x/D/search-icon-light-grey-md.png") no-repeat right;
+    background-size: 20px;
+    border-radius:30px
+  }
+  .srchAddItm{
+    margin-top: 20px;
+  }
+  .print{
+    font-size: 2rem;
+    color:darkgreen
+  }
+  .avacado{
+    height:50px;
+    width:50px;
+  }
+
+  .alignrow{
+    margin-top:10px;
+    border:1px solid;
+  }
+  .tablefont{
+    font-size: 0.75rem;
+    font-weight: lighter;
+  }
