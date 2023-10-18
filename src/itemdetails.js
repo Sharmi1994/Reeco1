@@ -1,6 +1,6 @@
 var data2 = [
   {
-    Sno: "1",
+    id: 1,
     Img: "https://media.istockphoto.com/id/94929126/photo/avocados-isolated-on-white.jpg?s=612x612&w=0&k=20&c=c0BSuWnUTAkZyj-cYHKzR5dXtZWQ1_3PXcea3M92Z4I=",
     ProductName:
       "ChcikenBreast Fillets, Boneless mattumaMarinated 6 ounce Raw, invivid",
@@ -11,7 +11,7 @@ var data2 = [
     Status: "",
   },
   {
-    Sno: "2",
+    id: 2,
     Img: "https://media.istockphoto.com/id/94929126/photo/avocados-isolated-on-white.jpg?s=612x612&w=0&k=20&c=c0BSuWnUTAkZyj-cYHKzR5dXtZWQ1_3PXcea3M92Z4I=",
     ProductName:
       "ChcikenBreast Fillets, Boneless mattumaMarinated 6 ounce Raw, invivid",
@@ -22,7 +22,7 @@ var data2 = [
     Status: "",
   },
   {
-    Sno: "3",
+    id: 3,
     Img: "https://media.istockphoto.com/id/94929126/photo/avocados-isolated-on-white.jpg?s=612x612&w=0&k=20&c=c0BSuWnUTAkZyj-cYHKzR5dXtZWQ1_3PXcea3M92Z4I=",
     ProductName:
       "ChcikenBreast Fillets, Boneless mattumaMarinated 6 ounce Raw, invivid",
@@ -33,7 +33,7 @@ var data2 = [
     Status: "",
   },
   { 
-    Sno:'4',
+    id:4,
     Img:"https://media.istockphoto.com/id/94929126/photo/avocados-isolated-on-white.jpg?s=612x612&w=0&k=20&c=c0BSuWnUTAkZyj-cYHKzR5dXtZWQ1_3PXcea3M92Z4I=",   
     ProductName: 'ChcikenBreast Fillets, Boneless mattumaMarinated 6 ounce Raw, invivid',
     Brand: 'Hormel Black LabelMany',
@@ -43,7 +43,7 @@ var data2 = [
     Status:""
 
 },{ 
-    Sno:'5',
+    id:5,
     Img:"https://media.istockphoto.com/id/94929126/photo/avocados-isolated-on-white.jpg?s=612x612&w=0&k=20&c=c0BSuWnUTAkZyj-cYHKzR5dXtZWQ1_3PXcea3M92Z4I=",   
     ProductName: 'ChcikenBreast Fillets, Boneless mattumaMarinated 6 ounce Raw, invivid',
     Brand: 'Hormel Black LabelMany',

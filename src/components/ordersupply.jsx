@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaPrint, FaCheck, FaTimes } from "react-icons/fa";
-import { useEffect, useState } from "react";
 
 function Ordersupply(props) {
   const [values, setValues] = useState([]);
@@ -9,7 +8,23 @@ function Ordersupply(props) {
     setValues(props.itemdetails);
   }, [props.itemdetails]);
 
-  console.log(values);
+  function handlePlaceEvent(id, isFAcheck) {
+    const updatedValues = [...values];
+    const itemIndex = updatedValues.findIndex((item) => item.id === id);
+
+    if (itemIndex !== -1) {
+      //check if the element available in the array
+      updatedValues[itemIndex].Status =
+        isFAcheck === 0
+          ? "Order Approved"
+          : isFAcheck === 2
+          ? "Missing"
+          : isFAcheck === 3
+          ? "Missing-Urgent"
+          : updatedValues[itemIndex].Status; //if facheck is not =0,2,3 then no change in the content
+    }
+    setValues(updatedValues);
+  }
 
   return (
     <div className="container text-center supplydetails">
@@ -68,10 +83,15 @@ function Ordersupply(props) {
           </tr>
         </thead>
         <tbody>
-          {values.map((val) => {
+          {values.map((val, index) => {
+            const modalId = `exampleModalCenter${index}`; // Unique modal ID
             return (
-              <tr>
-                <th className="tablefont" style={{width:"300px"}} scope="col">
+              <tr key={val.id}>
+                <th
+                  className="tablefont"
+                  style={{ width: "300px" }}
+                  scope="col"
+                >
                   <img src={val.Img} alt="alt.img" className="avacado" />
                   {val.ProductName}
                 </th>
@@ -91,13 +111,128 @@ function Ordersupply(props) {
                   {val.Status}
                 </th>
                 <th scope="col">
-                  <FaCheck className="tablefont" />
+                  <FaCheck
+                    className="tablefont"
+                    onClick={() => handlePlaceEvent(val.id, 0)}
+                  />
+                </th>
+
+                <th scope="col">
+                  <FaTimes
+                    className="tablefont"
+                    data-toggle="modal"
+                    data-target={`#${modalId}`}
+                  />
+
+                  {/* <!-- Modal --> */}
+                  <div
+                    className="modal fade"
+                    id={modalId}
+                    tabIndex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true"
+                  >
+                    <div
+                      className="modal-dialog modal-dialog-centered"
+                      role="document"
+                    >
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5
+                            className="modal-title"
+                            id="exampleModalLongTitle"
+                          >
+                            Mising Product
+                          </h5>
+                          <button
+                            type="button"
+                            className="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          Is "Chicken Breast fillets,Boneless....urgent?"
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-light"
+                            data-dismiss="modal"
+                            onClick={() => handlePlaceEvent(val.id, 2)}
+                          >
+                            No
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-light"
+                            data-dismiss="modal"
+                            onClick={() => handlePlaceEvent(val.id, 3)}
+                          >
+                            Yes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </th>
                 <th scope="col">
-                  <FaTimes className="tablefont" />
-                </th>
-                <th scope="col">
-                  <button className="tablefont"> Edit</button>
+                  <button
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+                    className="btn btn-light"
+                  >
+                    {" "}
+                    Edit
+                  </button>
+
+                  {/* <!-- Modal 2--> */}
+                  <div
+                    className="modal fade"
+                    id="exampleModalCenter"
+                    tabIndex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true"
+                  >
+                    <div
+                      className="modal-dialog modal-dialog-centered"
+                      role="document"
+                    >
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLongTitle">
+                            Modal title
+                          </h5>
+                          <button
+                            type="button"
+                            className="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">...</div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" className="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </th>
               </tr>
             );
