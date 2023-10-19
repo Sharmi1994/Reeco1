@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import { FaPrint, FaCheck, FaTimes } from "react-icons/fa";
 
 function Ordersupply(props) {
+   
   const [values, setValues] = useState([]);
+  const [activeButton, setActiveButton] = useState(null);
 
   useEffect(() => {
     setValues(props.itemdetails);
   }, [props.itemdetails]);
 
   function handlePlaceEvent(id, isFAcheck) {
+    const currentDate=new Date()
+    let ShippingDate=new Date(props.supplierdata.ShippingDate)
+
+   if(ShippingDate>currentDate){
     const updatedValues = [...values];
     const itemIndex = updatedValues.findIndex((item) => item.id === id);
 
@@ -22,8 +28,32 @@ function Ordersupply(props) {
           : isFAcheck === 3
           ? "Missing-Urgent"
           : updatedValues[itemIndex].Status; //if facheck is not =0,2,3 then no change in the content
+
+      setValues(updatedValues);
+     
     }
-    setValues(updatedValues);
+   }
+   else{
+    alert("Date Expired")
+   }
+
+   
+    
+  }
+
+  function getButtonClass(status) {
+    switch (status) {
+      case "Order Approved":
+        return "buttonApproved";
+
+      case "Missing":
+        return "buttonMissing";
+
+      case "Missing-Urgent":
+        return "buttonUrgent";
+      default:
+        return "null";
+    }
   }
 
   return (
@@ -107,7 +137,10 @@ function Ordersupply(props) {
                 <th className="tablefont" scope="col">
                   {val.Total}
                 </th>
-                <th className="tablefont" scope="col">
+                <th
+                  className={`tablefont ${getButtonClass(val.Status)}`}
+                  scope="col"
+                >
                   {val.Status}
                 </th>
                 <th scope="col">
@@ -182,57 +215,13 @@ function Ordersupply(props) {
                 <th scope="col">
                   <button
                     type="button"
-                    data-toggle="modal"
-                    data-target="#exampleModalCenter"
+                    // data-toggle="modal"
+                    // data-target="#exampleModalCenter"
                     className="btn btn-light"
                   >
                     {" "}
                     Edit
                   </button>
-
-                  {/* <!-- Modal 2--> */}
-                  <div
-                    className="modal fade"
-                    id="exampleModalCenter"
-                    tabIndex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalCenterTitle"
-                    aria-hidden="true"
-                  >
-                    <div
-                      className="modal-dialog modal-dialog-centered"
-                      role="document"
-                    >
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLongTitle">
-                            Modal title
-                          </h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">...</div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </th>
               </tr>
             );

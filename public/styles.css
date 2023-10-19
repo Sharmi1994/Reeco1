@@ -91,6 +91,57 @@ border-radius: 10px;
     border:1px solid;
   }
   .tablefont{
-    font-size: 0.75rem;
-    font-weight: lighter;
+    font-size: 0.65rem;
+   
   }
+  h5{
+    font-size: 0.85rem;
+    margin-top:15px;
+    width:90%;
+    font-weight: bold;
+  }
+  h6{
+    font-size: x-small;
+    text-align: left;
+    margin-left: 10px;
+  }
+  .close{
+    margin-top: 15px;
+    margin-right:15px
+  }
+  .incrementqty{
+    display: flex;
+    justify-content: space-around;
+    text-align:left;
+    padding: 10px;
+    font-size: 0.75rem;
+  }
+  .inputtext{
+    width: 40%;
+    border-radius: 5px;
+    border-color: darkgreen;
+    border: 1px solid;
+    padding: 1px;
+  }
+
+  .buttonApproved{
+    color: green;
+  }
+  .buttonMissing{
+    color: orange;
+  }
+  .buttonUrgent{
+    color: red;
+  }
+  .buttonApproved{
+    color:green
+  }
+  .buttonDisapproved{
+    color:orange
+  }
+  .buttonDisapprvEmer{
+    color:red
+  }
+.fonticon{
+    margin:2px
+}
